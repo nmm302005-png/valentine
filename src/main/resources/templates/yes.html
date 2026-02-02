@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mayuri Said Yes ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: 'Montserrat', sans-serif;
+      background:
+        linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.7)),
+        url("/images/couple.jpg") center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      max-width: 750px;
+      padding: 50px;
+      animation: fadeIn 2s ease;
+    }
+
+    h1 {
+      font-size: 3.6rem;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    h1 span {
+      color: #ffb3c1;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 400;
+      opacity: 0.95;
+      margin-bottom: 30px;
+    }
+
+    .message {
+      font-size: 1.15rem;
+      line-height: 1.9;
+      opacity: 0.95;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .heart {
+      position: absolute;
+      color: #ffb3c1;
+      font-size: 14px;
+      animation: floatUp 10s linear infinite;
+      opacity: 0.35;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(100vh); }
+      to { transform: translateY(-100px); }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Mayuri said <span>YES</span> ❤️</h1>
+  <h2>This is officially my favorite commit ever.</h2>
+
+  <div class="message">
+    From this moment, I promise to debug your bad days,  
+    optimize your happiness, and always keep our love  
+    in production — never in beta. 😊  
+    <br><br>
+    Let’s build something beautiful together.
+  </div>
+</div>
+
+<script>
+  // subtle floating hearts
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 8 + 10 + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 10000);
+  }, 1200);
+</script>
+
+</body>
+</html>

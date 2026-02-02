@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For You ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: 'Montserrat', sans-serif;
+      background: radial-gradient(circle at top, #2b1055, #000);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      color: white;
+    }
+
+    .card {
+      background: linear-gradient(145deg, #ff4d6d, #ff758f);
+      padding: 60px 80px;
+      border-radius: 24px;
+      text-align: center;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+      animation: float 3s ease-in-out infinite;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .typing {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      height: 30px;
+    }
+
+    .buttons {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    button {
+      border: none;
+      padding: 16px 40px;
+      border-radius: 40px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .yes {
+      background: #00ff9c;
+      color: #111;
+      box-shadow: 0 0 20px #00ff9c;
+    }
+
+    .yes:hover {
+      transform: scale(1.2);
+      box-shadow: 0 0 40px #00ff9c;
+    }
+
+    .no {
+      background: #ff2e63;
+      color: white;
+      box-shadow: 0 0 20px #ff2e63;
+      position: relative;
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .heart {
+      position: absolute;
+      color: #ff4d6d;
+      font-size: 20px;
+      animation: fall 6s linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes fall {
+      from { transform: translateY(-100px); }
+      to { transform: translateY(110vh); }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>Will you be my Valentine? 💖</h1>
+  <div class="typing" id="typing"></div>
+
+  <div class="buttons">
+    <form action="/yes" method="post">
+      <button class="yes">YES 💚</button>
+    </form>
+    <button class="no" id="no">NO 💔</button>
+  </div>
+</div>
+
+<script>
+  // Typing effect
+  const text = "I debugged my life and found one missing dependency — you.";
+  let i = 0;
+  const typingDiv = document.getElementById("typing");
+
+  function type() {
+    if (i < text.length) {
+      typingDiv.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(type, 50);
+    }
+  }
+  type();
+
+  // NO button logic
+  const noBtn = document.getElementById("no");
+  const messages = [
+    "Are you sure? 😳",
+    "Think again 😏",
+    "Don't do this 😭",
+    "System says YES only ❤️",
+    "You can't escape 😈",
+    "This button is broken 😌"
+  ];
+
+  noBtn.onmouseover = () => {
+    noBtn.style.position = "absolute";
+    noBtn.style.left = Math.random() * 70 + "%";
+    noBtn.style.top = Math.random() * 70 + "%";
+    noBtn.innerText = messages[Math.floor(Math.random()*messages.length)];
+  };
+
+  // Floating hearts
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 10 + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 6000);
+  }, 400);
+</script>
+
+</body>
+</html>
